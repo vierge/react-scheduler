@@ -24,6 +24,37 @@ import "index.scss";
 //   .add("pinned", () => <Task task={{...task, state: 'TASK_PINNED'}} {...actions} />)
 //   .add("archived", () => <Task task={{...task, state: 'TASK_ARCHIVED'}} {...actions} />)
 
+import DayList from "components/DayList"
+
+const days = [
+  {
+    id: 1,
+    name: "Monday",
+    spots: 2,
+  },
+  {
+    id: 2,
+    name: "Tuesday",
+    spots: 5,
+  },
+  {
+    id: 3,
+    name: "Wednesday",
+    spots: 0,
+  },
+];
+
+storiesOf("DayList", module)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
+  })
+  .add("Monday", () => (
+    <DayList days={days} day={"Monday"} setDay={action("setDay")} />
+  ))
+  .add("Tuesday", () => (
+    <DayList days={days} day={"Tuesday"} setDay={action("setDay")} />
+  ));
+
 import DayListItem from "components/DayListItem"
 
 storiesOf("DayListItem", module)
