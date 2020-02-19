@@ -9,18 +9,21 @@ export default function InterviewerList(props) {
   const mappedInterviewerList = interviewers.map(thisInterviewer => {
     return (
       <InterviewerListItem
-        id={thisInterviewer.id}
+        key={thisInterviewer.id}
         name={thisInterviewer.name}
         avatar={thisInterviewer.avatar}
         selected={thisInterviewer.id === interviewer}
-        setInterviewer={setInterviewer}
+        setInterviewer={(event) => setInterviewer(thisInterviewer.id)}
       />
     )
   })
 
   return (
-    <ul>
-      {mappedInterviewerList}
-    </ul>
+    <>
+      <header className="interviewers__header">Interviewer List</header>
+      <ul className="interviewers__list">
+        {mappedInterviewerList}
+      </ul>
+    </>
   )
 }
