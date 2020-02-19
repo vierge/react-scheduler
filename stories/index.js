@@ -150,8 +150,10 @@ storiesOf("InterviewerList", module)
     />
   ));
 
-import Appointments from "components/Appointment/index"
+import Appointment from "components/Appointment/index"
 import Header from "components/Appointment/header"
+import Empty from "components/Appointment/empty";
+import Show from "components/Appointment/show";
 
 storiesOf("Appointment", module)
   .addParameters({
@@ -160,4 +162,12 @@ storiesOf("Appointment", module)
   .add("Appointment", () => <Appointment />)
   .add("Appointment With Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
-  
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () =>
+    <Show
+      student="Lydia Miller-Jones"
+      interviewer="Sylvia Palmer"
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
+    />
+  )
