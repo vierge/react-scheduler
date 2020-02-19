@@ -157,6 +157,7 @@ import Show from "components/Appointment/show";
 import Confirm from "components/Appointment/confirm";
 import Status from "components/Appointment/status";
 import Error from "components/Appointment/error";
+import Form from 'components/Appointment/form'
 
 storiesOf("Appointment", module)
   .addParameters({
@@ -184,3 +185,19 @@ storiesOf("Appointment", module)
   .add("Status Deleting", () => <Status message="Deleting" />)
   .add("Status Loading", () => <Status message="Loading" />)
   .add("Error", () => <Error message="Could not delete Appointment... :(" onClose={action("onClose")} />)
+  .add("Form Create", () => 
+    <Form 
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+    )
+    .add("Form Edit", () => 
+    <Form 
+      name="Mara Gray"
+      interviewers={interviewers}
+      interviewer={3}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+    )
