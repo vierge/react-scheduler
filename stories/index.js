@@ -150,7 +150,7 @@ storiesOf("InterviewerList", module)
     />
   ));
 
-import Appointment from "components/Appointment/index"
+import Appointment from "components/Appointment/index.jsx"
 import Header from "components/Appointment/header"
 import Empty from "components/Appointment/empty";
 import Show from "components/Appointment/show";
@@ -164,6 +164,22 @@ storiesOf("Appointment", module)
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
+  .add("Appointment Empty", () => (
+    <>
+      <Appointment id={1} time="12pm" />
+      <Appointment id="last" time="1pm" />
+    </>
+  ))
+  .add("Appointment Booked", () => (
+    <>
+    <Appointment
+      id={1}
+      time="12pm"
+      interview={{ student: "Lydia Miller-Jones", interviewer }}
+    />
+    <Appointment id="last" time="1pm" />
+    </>
+  ))
   .add("Appointment With Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
@@ -188,7 +204,7 @@ storiesOf("Appointment", module)
   .add("Form Create", () => 
     <Form 
       interviewers={interviewers}
-      onSave={action("onSave")}
+      onSave={action("onSave", name, interviewer)}
       onCancel={action("onCancel")}
     />
     )
@@ -197,7 +213,7 @@ storiesOf("Appointment", module)
       name="Mara Gray"
       interviewers={interviewers}
       interviewer={3}
-      onSave={action("onSave")}
+      onSave={action("onSave", name, interviewer)}
       onCancel={action("onCancel")}
     />
     )

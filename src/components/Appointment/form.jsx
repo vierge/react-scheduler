@@ -27,6 +27,7 @@ export default function Form(props) {
             type="text"
             placeholder="Enter Student Name"
             onChange={(event) => setName(event.target.value)}
+            onSubmit={(event) => event.preventDefault()}
           />
         </form>
         <InterviewerList interviewers={interviewers} interviewer={interviewer} setInterviewer={setInterviewer} />
@@ -34,7 +35,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button onClick={(event) => cancel()} danger>Cancel</Button>
-          <Button onClick={onSave} confirm>Save</Button>
+          <Button onClick={(event) => onSave(name, interviewer)} confirm>Save</Button>
         </section>
       </section>
     </main>
