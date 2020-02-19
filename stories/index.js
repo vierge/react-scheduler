@@ -154,6 +154,9 @@ import Appointment from "components/Appointment/index"
 import Header from "components/Appointment/header"
 import Empty from "components/Appointment/empty";
 import Show from "components/Appointment/show";
+import Confirm from "components/Appointment/confirm";
+import Status from "components/Appointment/status";
+import Error from "components/Appointment/error";
 
 storiesOf("Appointment", module)
   .addParameters({
@@ -171,3 +174,13 @@ storiesOf("Appointment", module)
       onDelete={action("onDelete")}
     />
   )
+  .add("Confirm", () =>
+    <Confirm
+      message="Delete The Appointment"
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")}
+    />
+  )
+  .add("Status Deleting", () => <Status message="Deleting" />)
+  .add("Status Loading", () => <Status message="Loading" />)
+  .add("Error", () => <Error message="Could not delete Appointment... :(" onClose={action("onClose")} />)
