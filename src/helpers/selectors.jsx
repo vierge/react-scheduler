@@ -17,7 +17,7 @@ export function getAppointmentsForDay(state, day) {
 
 export function getInterview(state, interview) {
   let results = null;
-  console.log(state);
+  console.log({state, interview});
   if (interview !== null) {
     results = {
       student: interview.student,
